@@ -1,438 +1,207 @@
-# Blog Setup & Update Guide for Musfiq R Farhan Portfolio
+# GitHub Pages Deployment Guide
 
-This guide explains how to add blog posts, update content, and manage your portfolio website.
+This guide will help you deploy the Gobayezid portfolio to GitHub Pages with custom domain support.
 
-## Project File Structure
+## Prerequisites
 
-```
-gobayezid_project/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml                 # GitHub Actions deployment workflow
-├── client/
-│   ├── public/
-│   │   ├── CNAME                      # Custom domain (musfiqrfarhan.blog)
-│   │   ├── favicon.ico
-│   │   └── robots.txt
-│   ├── src/
-│   │   ├── pages/
-│   │   │   └── Home.tsx               # Main portfolio page
-│   │   ├── components/
-│   │   │   └── ui/                    # shadcn/ui components
-│   │   ├── App.tsx                    # App routing
-│   │   ├── main.tsx                   # React entry point
-│   │   └── index.css                  # Global styles & theme
-│   └── index.html                     # HTML template
-├── server/                            # Backend placeholder (not used in static)
-├── shared/                            # Shared types placeholder
-├── package.json                       # Project dependencies
-├── vite.config.ts                     # Vite configuration
-├── README.md                          # Project documentation
-├── GITHUB_PAGES_SETUP.md              # GitHub Pages deployment guide
-└── BLOG_SETUP_GUIDE.md                # This file
+- GitHub account with the repository `bayzed123/Gobayezid`
+- A custom domain (optional, but recommended)
+- Basic understanding of GitHub settings
 
-```
+## Automatic Deployment Setup
 
-## How to Update Your Portfolio
+The repository includes a GitHub Actions workflow that automatically builds and deploys your site whenever you push to the `main` branch.
 
-### 1. Update Personal Information
+### Step 1: Enable GitHub Pages
 
-Edit `client/src/pages/Home.tsx` to modify:
+1. Go to your GitHub repository: `https://github.com/bayzed123/Gobayezid`
+2. Click on **Settings** (gear icon)
+3. In the left sidebar, click on **Pages**
+4. Under "Build and deployment":
+   - **Source**: Select "GitHub Actions"
+   - This will use the workflow file `.github/workflows/deploy.yml`
 
-#### Hero Section
-```typescript
-// Line ~50-60
-<h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-  Bangladesh's <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Top Celebrity</span>
-</h1>
-<p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-  Bridging the worlds of radio, television, and digital media...
-</p>
-```
+### Step 2: Verify the Workflow
 
-#### About Section
-```typescript
-// Line ~120-140
-<p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-  Musfiq R Farhan is one of Bangladesh's most recognized...
-</p>
-```
+1. Go to the **Actions** tab in your repository
+2. You should see the "Deploy to GitHub Pages" workflow
+3. The workflow will automatically run on every push to `main`
+4. Check the workflow status to ensure it completes successfully
 
-#### Skills
-```typescript
-// Line ~35-42
-const skills = [
-  { category: "Broadcasting & Media", items: ["Radio Hosting", "TV Presenting", ...] },
-  { category: "Content Creation", items: ["Digital Storytelling", ...] },
-  // Add or modify skills here
-];
-```
+### Step 3: Access Your Site
 
-#### Experience
-```typescript
-// Line ~44-57
-const experiences = [
-  {
-    company: "Radio Broadcasting",
-    position: "Professional Radio Host",
-    period: "Multiple Years",
-    description: "Hosting engaging radio shows...",
-  },
-  // Add or modify experience here
-];
-```
+Once the workflow completes:
 
-#### Projects/Featured Work
-```typescript
-// Line ~10-34
-const projects = [
-  {
-    id: 1,
-    title: "Radio Broadcasting",
-    description: "Professional radio hosting...",
-    category: "Radio",
-    tags: ["Radio Hosting", "Audio Production"],
-    image: "https://images.unsplash.com/...",
-  },
-  // Add or modify projects here
-];
-```
+- **Default GitHub Pages URL**: `https://bayzed123.github.io/Gobayezid`
+- Visit this URL to see your deployed portfolio
 
-#### Social Media Links
-```typescript
-// Line ~180-200 (Contact Section)
-<a href="https://www.instagram.com/musfiqfarhan?igsh=..." target="_blank">
-  📸 Instagram
-</a>
-// Update all social links here
-```
+## Custom Domain Setup
 
-### 2. Update Website Metadata
+To use a custom domain (e.g., `gobayezid.com`):
 
-Edit `client/index.html` to modify:
+### Step 1: Update the CNAME File
 
-```html
-<!-- Line 9-14 -->
-<title>Musfiq R Farhan - Bangladesh's Top Celebrity | Radio, TV & Digital Media</title>
-<meta name="description" content="Your updated description here" />
-<meta name="keywords" content="keywords, here, separated, by, comma" />
-<meta name="author" content="Musfiq R Farhan" />
-<meta property="og:title" content="Your OG title here" />
-<meta property="og:description" content="Your OG description here" />
-```
-
-### 3. Update README
-
-Edit `README.md` to modify:
-
-```markdown
-# Musfiq R Farhan - Professional Portfolio
-
-Your updated description here...
-
-## About Musfiq R Farhan
-
-Your biography and professional information...
-
-### Social Links
-
-- **Instagram:** https://www.instagram.com/musfiqfarhan
-- **Facebook:** https://www.facebook.com/share/...
-- **YouTube:** https://youtube.com/@musfiqrfarhan
-- **WhatsApp Channel:** https://whatsapp.com/channel/...
-- **IMDB:** https://www.imdb.com/name/nm11068428/bio/
-```
-
-### 4. Update Custom Domain
-
-Edit `client/public/CNAME`:
-
-```
-musfiqrfarhan.blog
-```
-
-Change to your desired domain if needed.
-
-### 5. Update Theme Colors
-
-Edit `client/src/index.css` to modify the color palette:
-
-```css
-:root {
-  --primary: var(--color-blue-700);      /* Main brand color */
-  --primary-foreground: var(--color-blue-50);
-  --secondary: oklch(0.98 0.001 286.375);
-  --accent: oklch(0.967 0.001 286.375);
-  /* Modify other colors as needed */
-}
-```
-
-## Adding Blog Posts (Future Enhancement)
-
-To add a blog system similar to your previous portfolio:
-
-### Step 1: Create Blog Directory
-
-```
-client/src/
-├── pages/
-│   ├── Home.tsx
-│   └── Blog.tsx              # New blog page
-├── components/
-│   └── BlogPost.tsx          # Blog post component
-└── data/
-    └── blog-posts.json       # Blog posts data
-```
-
-### Step 2: Create Blog Posts Data
-
-Create `client/src/data/blog-posts.json`:
-
-```json
-[
-  {
-    "id": 1,
-    "title": "My Journey in Radio Broadcasting",
-    "slug": "journey-radio-broadcasting",
-    "excerpt": "A look at my career in radio...",
-    "content": "Full blog post content here...",
-    "date": "2026-05-12",
-    "author": "Musfiq R Farhan",
-    "tags": ["Radio", "Broadcasting", "Entertainment"],
-    "image": "https://images.unsplash.com/...",
-    "readTime": "5 min read"
-  }
-]
-```
-
-### Step 3: Create Blog Page Component
-
-Create `client/src/pages/Blog.tsx` with blog listing and detail views.
-
-### Step 4: Update App Routing
-
-Edit `client/src/App.tsx`:
-
-```typescript
-import Blog from "@/pages/Blog";
-
-function Router() {
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/blog"} component={Blog} />
-      <Route path={"/blog/:slug"} component={BlogPost} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-```
-
-## GitHub Workflow Deployment
-
-The `.github/workflows/deploy.yml` file automatically:
-
-1. **Triggers** on every push to `main` branch
-2. **Installs** dependencies using pnpm
-3. **Builds** the project with `GITHUB_PAGES=true`
-4. **Uploads** built files to GitHub Pages
-5. **Deploys** to your custom domain
-
-### Workflow Steps Explained
-
-```yaml
-# 1. Checkout your code
-- name: Checkout repository
-  uses: actions/checkout@v4
-
-# 2. Setup Node.js 18
-- name: Setup Node.js
-  uses: actions/setup-node@v4
-  with:
-    node-version: '18'
-
-# 3. Install pnpm package manager
-- name: Install pnpm
-  uses: pnpm/action-setup@v2
-
-# 4. Install all dependencies
-- name: Install dependencies
-  run: pnpm install
-
-# 5. Build the project
-- name: Build project
-  run: GITHUB_PAGES=true pnpm build
-
-# 6. Deploy to GitHub Pages
-- name: Deploy to GitHub Pages
-  uses: actions/deploy-pages@v4
-```
-
-## How to Deploy Changes
-
-### Step 1: Make Changes Locally
-
-Edit files in your project directory:
+1. Edit `client/public/CNAME` in your repository
+2. Replace `gobayezid.com` with your custom domain
+3. Commit and push the change
 
 ```bash
-# Example: Update Home.tsx
-nano client/src/pages/Home.tsx
-
-# Example: Update metadata
-nano client/index.html
-
-# Example: Update theme
-nano client/src/index.css
-```
-
-### Step 2: Test Locally
-
-```bash
-# Start development server
-pnpm dev
-
-# Open http://localhost:3000 in your browser
-# Test all changes
-```
-
-### Step 3: Commit Changes
-
-```bash
-# Add all changes
-git add .
-
-# Commit with a descriptive message
-git commit -m "Update portfolio with new content and social links"
-```
-
-### Step 4: Push to GitHub
-
-```bash
-# Push to main branch
+# Example: If your domain is example.com
+echo "example.com" > client/public/CNAME
+git add client/public/CNAME
+git commit -m "Update custom domain"
 git push origin main
 ```
 
-### Step 5: Monitor Deployment
+### Step 2: Configure GitHub Pages with Custom Domain
 
-1. Go to your repository: https://github.com/bayzed123/Gobayezid
-2. Click on **Actions** tab
-3. Watch the "Deploy to GitHub Pages" workflow run
-4. Once complete, your site updates at `https://musfiqrfarhan.blog`
+1. Go to your repository **Settings** → **Pages**
+2. Under "Custom domain", enter your domain (e.g., `gobayezid.com`)
+3. Click **Save**
+4. GitHub will automatically check for the CNAME file
 
-## Common Updates
+### Step 3: Configure DNS Records
 
-### Update Social Links
+Contact your domain registrar and add the following DNS records:
 
-Edit `client/src/pages/Home.tsx` around line 180-200:
+#### Option A: Using A Records (Recommended)
 
-```typescript
-<Button size="lg" asChild className="gap-2">
-  <a href="https://www.instagram.com/musfiqfarhan" target="_blank">
-    📸 Instagram
-  </a>
-</Button>
+Add these A records to your DNS:
+
+```
+A record: 185.199.108.153
+A record: 185.199.109.153
+A record: 185.199.110.153
+A record: 185.199.111.153
 ```
 
-### Add New Achievement
+#### Option B: Using CNAME Record
 
-Edit `client/src/pages/Home.tsx` around line ~65-75:
+Add this CNAME record:
 
-```typescript
-const achievements = [
-  {
-    title: "Your New Achievement",
-    description: "Description of the achievement",
-  },
-  // Add more achievements
-];
+```
+CNAME: bayzed123.github.io
 ```
 
-### Change Website Title
+### Step 4: Enable HTTPS
 
-Edit `client/index.html`:
+1. Go to **Settings** → **Pages**
+2. Under "Custom domain", check **Enforce HTTPS**
+3. Wait for the SSL certificate to be issued (usually takes a few minutes)
 
-```html
-<title>Your New Title Here</title>
-```
+## Deployment Workflow
 
-### Update About Section
+The GitHub Actions workflow automatically:
 
-Edit `client/src/pages/Home.tsx` around line ~120-140:
+1. **Triggers** on every push to the `main` branch
+2. **Installs** dependencies using pnpm
+3. **Builds** the project with `GITHUB_PAGES=true` environment variable
+4. **Uploads** the built files to GitHub Pages
+5. **Deploys** the site to your GitHub Pages URL
 
-```typescript
-<p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-  Your updated about section text here...
-</p>
+### Build Output
+
+- **Source**: `client/src/` (React components)
+- **Build Output**: `dist/public/` (Static files)
+- **Deployment**: GitHub Pages hosting
+
+## Manual Deployment (Alternative)
+
+If you prefer to deploy manually:
+
+```bash
+# 1. Install dependencies
+pnpm install
+
+# 2. Build the project for GitHub Pages
+GITHUB_PAGES=true pnpm build
+
+# 3. The output will be in dist/public/
+# 4. Commit and push to main branch
+git add .
+git commit -m "Deploy to GitHub Pages"
+git push origin main
 ```
 
 ## Troubleshooting
 
-### Deployment Failed
+### Workflow Fails to Build
 
-1. Check the **Actions** tab in GitHub for error messages
+1. Check the **Actions** tab for error messages
 2. Ensure all dependencies are installed: `pnpm install`
-3. Verify TypeScript has no errors: `pnpm check`
-4. Check that `package.json` has correct build script
+3. Verify Node.js version compatibility (18+)
+4. Check for TypeScript errors: `pnpm check`
 
 ### Site Not Updating
 
-1. Clear browser cache (Ctrl+Shift+Delete)
-2. Wait a few minutes for GitHub Pages to update
-3. Check that the workflow completed successfully
-4. Verify DNS is pointing to GitHub Pages
+1. Verify the workflow completed successfully in **Actions**
+2. Clear your browser cache (Ctrl+Shift+Delete or Cmd+Shift+Delete)
+3. Check the deployment URL: `https://bayzed123.github.io/Gobayezid`
+4. Wait a few minutes for DNS propagation if using a custom domain
 
-### Build Errors
+### Custom Domain Not Working
 
-1. Run `pnpm install` to ensure all dependencies are installed
-2. Run `pnpm check` to verify TypeScript compilation
-3. Check for any import errors in your code
-4. Ensure all file paths are correct
+1. Verify CNAME file exists in `client/public/CNAME`
+2. Check DNS records are correctly configured
+3. Ensure HTTPS is enabled in GitHub Pages settings
+4. Wait for SSL certificate to be issued (up to 24 hours)
 
-## File Paths Reference
+### Build Fails with "Module not found"
 
-| File | Purpose | Edit For |
-|------|---------|----------|
-| `client/src/pages/Home.tsx` | Main portfolio page | Content, skills, experience, projects |
-| `client/index.html` | HTML template | Page title, meta tags, description |
-| `client/src/index.css` | Global styles | Colors, fonts, theme |
-| `client/public/CNAME` | Custom domain | Domain name |
-| `package.json` | Project config | Homepage URL, project name |
-| `README.md` | Documentation | Project description, setup instructions |
-| `.github/workflows/deploy.yml` | Deployment automation | Deployment settings |
+1. Run `pnpm install` locally to verify dependencies
+2. Check for any missing imports in your code
+3. Ensure all file paths are correct
+4. Run `pnpm check` to verify TypeScript compilation
 
-## Quick Reference Commands
+## Environment Variables
 
-```bash
-# Install dependencies
-pnpm install
+The build process uses:
 
-# Start development server
-pnpm dev
+- `GITHUB_PAGES=true`: Sets the base path to `/Gobayezid/` for GitHub Pages
+- All other environment variables are automatically injected by Manus
 
-# Build for production
-pnpm build
+## Performance Tips
 
-# Check TypeScript errors
-pnpm check
+1. **Optimize Images**: Compress images before adding to the project
+2. **Code Splitting**: React automatically code-splits components
+3. **Caching**: GitHub Pages caches static files automatically
+4. **CDN**: GitHub Pages uses Fastly CDN for fast global delivery
 
-# Format code
-pnpm format
+## Security
 
-# Commit changes
-git add .
-git commit -m "Your commit message"
+- HTTPS is automatically enabled for custom domains
+- GitHub Pages enforces HTTPS for all connections
+- No server-side code is executed (static site only)
+- All assets are served from GitHub's secure infrastructure
 
-# Push to GitHub
-git push origin main
-```
+## Monitoring
 
-## Support & Resources
+To monitor your deployments:
 
-- **GitHub Pages Docs:** https://docs.github.com/en/pages
-- **React Documentation:** https://react.dev
-- **Tailwind CSS:** https://tailwindcss.com
-- **shadcn/ui Components:** https://ui.shadcn.com
+1. Go to the **Actions** tab
+2. Click on "Deploy to GitHub Pages"
+3. View the workflow runs and their status
+4. Click on a run to see detailed logs
+
+## Updating Your Site
+
+To update your portfolio:
+
+1. Make changes locally: `pnpm dev`
+2. Test your changes: `http://localhost:3000`
+3. Commit your changes: `git commit -m "Update portfolio"`
+4. Push to GitHub: `git push origin main`
+5. The workflow will automatically build and deploy
+
+## Support
+
+For issues or questions:
+
+1. Check GitHub Pages documentation: https://docs.github.com/en/pages
+2. Review the workflow logs in the **Actions** tab
+3. Verify your DNS configuration with your domain registrar
+4. Check for any GitHub status page updates: https://www.githubstatus.com
 
 ---
 
-**Happy updating! Your portfolio is now ready for continuous deployment.**
+**Happy deploying! Your portfolio is now live on GitHub Pages.**
