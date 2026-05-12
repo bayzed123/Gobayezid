@@ -1,15 +1,16 @@
-# Gobayezid - Professional Portfolio & Blog System
+# Musfiq R Farhan - Professional Portfolio
 
-A modern, professional portfolio and blog system built with React, Tailwind CSS, and shadcn/ui. Designed to showcase your work, share your stories, and connect with your audience.
+A modern, professional portfolio website for Musfiq R Farhan, Bangladesh's top celebrity. Built with React, Tailwind CSS, and shadcn/ui. Showcasing his work across radio, television, and digital media platforms.
 
 ## Features
 
 - **Responsive Design:** Fully responsive and optimized for all devices
 - **Modern UI:** Built with React 19 and Tailwind CSS 4
-- **Professional Sections:** Hero, About, Skills, Experience, Projects, Contact, and Footer
+- **Professional Sections:** Hero, About, Achievements, Skills, Experience, Featured Work, Contact, and Footer
+- **Social Integration:** Direct links to Instagram, Facebook, YouTube, WhatsApp, and IMDB
 - **Component Library:** shadcn/ui components for consistent design
 - **Performance:** Optimized for fast loading and smooth interactions
-- **SEO Ready:** Proper meta tags and semantic HTML structure
+- **SEO Ready:** Proper meta tags and semantic HTML structure for celebrity profile
 - **Accessible:** WCAG compliant with proper keyboard navigation
 
 ## Project Structure
@@ -59,6 +60,18 @@ pnpm dev
 
 4. Open your browser and navigate to `http://localhost:3000`
 
+## About Musfiq R Farhan
+
+Musfiq R Farhan is one of Bangladesh's most recognized and celebrated personalities, known for his exceptional work across radio, television, and digital media. With a career spanning multiple years, he has built a reputation for authentic storytelling and engaging content that resonates with millions of viewers and listeners.
+
+### Social Links
+
+- **Instagram:** https://www.instagram.com/musfiqfarhan
+- **Facebook:** https://www.facebook.com/share/1cQdw7JcMs/
+- **YouTube:** https://youtube.com/@musfiqrfarhan
+- **WhatsApp Channel:** https://whatsapp.com/channel/0029VbBdG03HQbS1bTrVHF1X
+- **IMDB:** https://www.imdb.com/name/nm11068428/bio/
+
 ## Development
 
 ### Building
@@ -75,10 +88,11 @@ pnpm build
 Edit `client/src/pages/Home.tsx` to customize:
 - Hero section headline and description
 - About section content
+- Achievements and recognition
 - Skills and expertise
-- Experience entries
-- Project showcase
-- Contact information
+- Professional experience entries
+- Featured work/projects
+- Social media links
 
 #### Customize Colors
 
@@ -198,4 +212,6 @@ For issues, questions, or suggestions, please open an issue on GitHub or contact
 
 **Built with ❤️ using React, Tailwind CSS, and shadcn/ui**
 
-**Portfolio & Blog System by Gobayezid**
+**Professional Portfolio for Musfiq R Farhan - Bangladesh's Top Celebrity**
+
+Bridging the worlds of radio, television, and digital media with storytelling that connects with millions across Bangladesh.
